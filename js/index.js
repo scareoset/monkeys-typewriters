@@ -21,7 +21,8 @@ const CANON_STRING = "the quick brown fox jumps over the lazy dog."
 //s
 // postconditions:
 // - monkeyIndex will increment or reset to 0
-// - monkeyLine will gain a CANON character or reset to ""
+// - monkeyLine will gain^[1] a CANON character or reset to ""
+// [1]: edit: monkeyLine will retain the added CANON character
 function nextMonkeyCharacter() {
     // get a random number between 0 and SAMPLE_SIZE to use as a random index
     const randomInd = Math.floor(Math.random() * MONKEY_SAMPLE.length);
@@ -29,6 +30,7 @@ function nextMonkeyCharacter() {
     // grab the character in MONKEY_SAMPLE at that random index!
     const result = MONKEY_SAMPLE.charAt(randomInd);
     console.log(result);
+    monkeyLine += result;
     // compare newCharacter to CANON_STRING's [monkeyIndex]th character
     return result.charAt(0) === CANON_STRING.charAt(monkeyIndex);
 }
